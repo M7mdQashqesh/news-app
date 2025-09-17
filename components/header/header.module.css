@@ -1,0 +1,42 @@
+.header {
+  background-color: white;
+  border-bottom: 2px solid rgb(128, 128, 128, 0.3);
+  height: 60px;
+}
+
+.wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  width: 130px;
+  display: flex;
+}
+
+.logo img {
+  max-width: 100%;
+}
+
+.navbar {
+  display: flex;
+  align-items: center;
+}
+
+.navbar a {
+  height: 60px;
+  align-content: center;
+  padding-inline: 20px;
+  color: #777;
+  font-weight: bold;
+  transition: 0.2s ease;
+}
+
+.navbar a:hover {
+  color: black;
+}
+
+.selected {
+  border-bottom: 3px solid red;
+}
