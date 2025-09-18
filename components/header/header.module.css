@@ -11,12 +11,7 @@
 }
 
 .logo {
-  width: 130px;
   display: flex;
-}
-
-.logo img {
-  max-width: 100%;
 }
 
 .navbar {

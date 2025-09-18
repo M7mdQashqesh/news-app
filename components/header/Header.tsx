@@ -1,12 +1,14 @@
+import Image from "next/image";
 import styles from "./header.module.css";
 import NavLink from "./nav-link/NavLink";
+import logo from "@/public/logo.png";
 
 const Header = () => {
   return (
     <div className={styles.header}>
       <div className={`container ${styles.wrapper}`}>
         <div className={styles.logo}>
-          <img src="/logo.png" />
+          <Image src={logo} alt="logo" width={130} />
         </div>
 
         <nav className={styles.navbar}>

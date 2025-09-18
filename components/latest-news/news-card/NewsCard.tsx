@@ -1,7 +1,9 @@
+import Image from "next/image";
 import styles from "../latest-news.module.css";
+import urban from "@/public/urban.webp";
 
 interface IProps {
-isHighlighted: boolean;
+  isHighlighted: boolean;
 }
 
 const NewsCard = (props: IProps) => {
@@ -14,7 +16,7 @@ const NewsCard = (props: IProps) => {
         </p>
         <button>Read more</button>
       </div>
-      <div className={styles.background}></div>
+      <Image src={urban} alt="news-image" layout="responsive" placeholder="blur" />
     </div>
   )
 }
