@@ -1,5 +1,5 @@
 import styles from "./header.module.css";
-import Link from "next/link";
+import NavLink from "./nav-link/NavLink";
 
 const Header = () => {
   return (
@@ -10,10 +10,10 @@ const Header = () => {
         </div>
 
         <nav className={styles.navbar}>
-          <Link className={styles.selected} href={"/"}>Home</Link>
-          <Link href={"/"}>Add News</Link>
-          <Link href={"/"}>Categories</Link>
-          <Link href={"/"}>Admin</Link>
+          <NavLink href={"/"}>Home</NavLink>
+          <NavLink href={"/add-news"}>Add News</NavLink>
+          <NavLink href={"/categories"}>Categories</NavLink>
+          <NavLink href={"/admin"}>Admin</NavLink>
         </nav>
       </div>
     </div>

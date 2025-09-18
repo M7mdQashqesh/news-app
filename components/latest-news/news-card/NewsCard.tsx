@@ -1,8 +1,12 @@
 import styles from "../latest-news.module.css";
 
-const NewsCard = () => {
+interface IProps {
+isHighlighted: boolean;
+}
+
+const NewsCard = (props: IProps) => {
   return (
-    <div className={styles.newsCard}>
+    <div className={`${styles.newsCard} ${props.isHighlighted ? styles.highlight : ""}`}>
       <div className={styles.info}>
         <h3>Urban Planning</h3>
         <p>
