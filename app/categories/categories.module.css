@@ -1,0 +1,26 @@
+.categories> :global(.container) {
+  margin-top: 50px;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 30px;
+}
+
+.news {
+  border: 1px solid gray;
+  border-radius: 10px;
+  background-color: white;
+  max-height: 500px;
+}
+
+.news h3 {
+  padding: 10px;
+}
+
+.news p {
+  padding: 10px;
+
+}
+
+.news img {
+  max-width: 100%;
+}
