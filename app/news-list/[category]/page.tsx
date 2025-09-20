@@ -2,6 +2,7 @@ import styles from "./news-list.module.css";
 import Header from "@/components/header/Header";
 import Card from "@/components/card/Card";
 import { News } from "@/types";
+import { fetchNews } from "@/services/fetchNews.services";
 
 interface IProps {
   params: Promise<{ category: string }>
@@ -9,19 +10,7 @@ interface IProps {
 
 const Page = async (props: IProps) => {
   const { category } = await props.params;
-
-  const response = await fetch(`https://newsapi.org/v2/top-headlines?category=${category.toLowerCase()}&apiKey=8c494736782842908e314311a4ed6ba9`, { method: "GET", cache: "no-store" });
-
-  const newResponse = (await response.json()) as News.IResponse;
-
-  const latestNews: News.Item[] = newResponse.articles.map(article => (
-    {
-      id: article.source.id,
-      title: article.title,
-      content: article.content,
-      imageUrl: article.urlToImage,
-    }
-  ));
+  const latestNews: News.Item[] = await fetchNews(category) as News.Item[];
 
   return (
     <div className={styles.newsList}>
