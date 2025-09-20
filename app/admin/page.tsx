@@ -1,6 +1,6 @@
 import Header from "@/components/header/Header";
 
-const page = () => {
+const Page = () => {
   return (
     <div>
       <Header />
@@ -9,4 +9,4 @@ const page = () => {
   )
 }
 
-export default page;
+export default Page;

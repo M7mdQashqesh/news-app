@@ -49,3 +49,26 @@ ul {
     width: 1170px;
   }
 }
+
+@keyframes loading {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.loader {
+  animation: loading 1s infinite;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  border: 8px solid rgb(211, 211, 211);
+  border-top-color: red;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
