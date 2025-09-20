@@ -1,54 +1,40 @@
-"use client";
 import styles from "./news-list.module.css";
-import { useEffect, useState } from "react";
-import { News } from "@/types";
 import Header from "@/components/header/Header";
 import Card from "@/components/card/Card";
+import { News } from "@/types";
 
 interface IProps {
   params: Promise<{ category: string }>
 }
 
-const Page = (props: IProps) => {
-  const [category, setCategory] = useState<string>("");
-  const [isLoading, setIsLoading] = useState<boolean>(true);
-  const [latestNews, setLatestNews] = useState<News.Item[]>([]);
+const Page = async (props: IProps) => {
+  const { category } = await props.params;
 
-  const getData = async () => {
-    setCategory((await props.params).category);
+  const response = await fetch(`https://newsapi.org/v2/top-headlines?category=${category.toLowerCase()}&apiKey=8c494736782842908e314311a4ed6ba9`, { method: "GET", cache: "no-store" });
 
-    if (!category) return;
+  const newResponse = (await response.json()) as News.IResponse;
 
-    fetch(`https://newsapi.org/v2/top-headlines?category=${category.toLowerCase()}&apiKey=1a2e9c49f8e9404abe9189548abf116f`,
-      { method: "GET" }).then(res => res.json() as Promise<News.IResponse>)
-      .then(res => {
-        const newsList: News.Item[] = res.articles.map((result: any) => (
-          { id: result.source.id, title: result.title, imageUrl: result.urlToImage, content: result.content }
-        ));
-        setLatestNews(newsList);
-      }
-
-      ).finally(() => setIsLoading(false));
-  }
-
-  useEffect(() => {
-    getData();
-  }, [category]);
+  const latestNews: News.Item[] = newResponse.articles.map(article => (
+    {
+      id: article.source.id,
+      title: article.title,
+      content: article.content,
+      imageUrl: article.urlToImage,
+    }
+  ));
 
   return (
     <div className={styles.newsList}>
       <Header />
       <div className="container">
-        {isLoading ? <div className="loader"></div> :
-          <div>
-            <h1>{category} News</h1>
-            <div className={styles.grid}>
-              {latestNews.map((news, index) => (
-                <Card key={news.id + index} title={news.title} content={news.content} imageUrl={news.imageUrl} />
-              ))}
-            </div>
+        <div>
+          <h1>{category} News</h1>
+          <div className={styles.grid}>
+            {latestNews.map((news, index) => (
+              <Card key={news.id + index} title={news.title} content={news.content} imageUrl={news.imageUrl} />
+            ))}
           </div>
-        }
+        </div>
       </div>
     </div>
   )
