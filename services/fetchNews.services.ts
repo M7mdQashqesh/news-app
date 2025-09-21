@@ -14,7 +14,6 @@ export const fetchNews = async (category: string) => {
     }
   ));
 
-  return new Promise((resolve) => setTimeout(() => {
-    resolve(latestNews);
-  }, 5000))
-}
+  return latestNews;
+};
+
