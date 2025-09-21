@@ -19,7 +19,6 @@ export const fetchNews = async (category: string) => {
       }
     ));
   }
-  throw new Error("Ops");
   return latestNews;
 };
 

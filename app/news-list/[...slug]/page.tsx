@@ -3,11 +3,12 @@ import NewsList from "@/components/news-list/news-list";
 import { Suspense } from "react";
 
 interface IProps {
-  params: Promise<{ category: string }>
+  params: Promise<{ slug: string[] }>
 }
 
 const Page = async (props: IProps) => {
-  const { category } = await props.params;
+  const { slug } = await props.params;
+  const [category] = slug;
 
   return (
     <div>
