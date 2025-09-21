@@ -1,10 +1,17 @@
+import { categories } from "@/data/data";
 import styles from "./categories.module.css";
+import Card from "../card/Card";
+import { News } from "@/types";
 
-const Categories = () => {
+
+const Categories = ({ caller }: { caller: string }) => {
   return (
-    <div className={styles.categories}>
-      <div className={`container`}>
+    <div className={`${caller === "home-page" ? styles.homeCategories : styles.categoriesPage}`}>
+      <div className="container">
         <h2>Categories</h2>
+        <div className={styles.grid}>
+          {categories.map((cat: News.ICategory) => <Card key={cat.title} data={cat} />)}
+        </div>
       </div>
     </div>
   )

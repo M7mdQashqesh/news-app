@@ -13,8 +13,8 @@ const NewsList = async (props: IProps) => {
   return (
     <div className={styles.grid}>
       {latestNews.length > 0 ? latestNews.map((news, index) => (
-        <Card key={news.id + index} title={news.title} content={news.content} imageUrl={news.imageUrl} />
-      )): <div>No Data Found</div>}
+        <Card key={news.id + index} data={news} />
+      )) : <div>No Data Found</div>}
     </div>
   )
 };

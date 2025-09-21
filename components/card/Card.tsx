@@ -1,25 +1,24 @@
+import { News } from "@/types";
 import styles from "./card.module.css";
 import Image from "next/image";
 
 interface IProps {
-  title: string,
-  imageUrl: string| null,
-  content: string,
+  data: News.ICategory | News.Item
 };
 
 const Card = (props: IProps) => {
   return (
     <div className={styles.card}>
-      <h3>{props.title}</h3>
-      {props.imageUrl !== null && (
+      <h3>{props.data.title}</h3>
+      {props.data.imageUrl !== null && (
         <Image
-          src={props.imageUrl}
+          src={props.data.imageUrl}
           alt="news-img"
           width={300}
           height={150}
         />
       )}
-      <p>{props.content}</p>
+      <p>{props.data.content}</p>
     </div>
   )
 }

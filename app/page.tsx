@@ -9,7 +9,7 @@ const Home = () => {
       <Header />
       <Hero />
       <LatestNews />
-      <Categories />
+      <Categories caller="home-page" />
     </div>
   );
 };

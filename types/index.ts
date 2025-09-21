@@ -25,4 +25,10 @@ export namespace News {
     imageUrl: string | null;
     content: string;
   }
+
+  export interface ICategory {
+    title: string;
+    imageUrl: string;
+    content: string;
+  }
 }

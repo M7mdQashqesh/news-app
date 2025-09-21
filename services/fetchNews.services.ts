@@ -6,17 +6,19 @@ export const fetchNews = async (category: string) => {
 
   const newResponse = (await response.json()) as News.IResponse;
 
+  let latestNews: News.Item[] = [];
+
   if (newResponse.totalResults === 0) notFound();
-
-  const latestNews: News.Item[] = newResponse.articles.map(article => (
-    {
-      id: article.source.id,
-      title: article.title,
-      content: article.content,
-      imageUrl: article.urlToImage,
-    }
-  ));
-
+  else {
+    latestNews = newResponse.articles.map(article => (
+      {
+        id: article.source.id,
+        title: article.title,
+        content: article.content,
+        imageUrl: article.urlToImage,
+      }
+    ));
+  }
   return latestNews;
 };
 

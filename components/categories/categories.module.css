@@ -1,7 +1,25 @@
-.categories {
+.homeCategories {
   padding-block: 80px;
 }
 
-.categories h2 {
+.homeCategories h2 {
   text-align: center;
+}
+
+.homeCategories .grid {
+  margin-top: 50px;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 30px;
+}
+
+.categoriesPage {
+  padding-block: 50px;
+}
+
+.categoriesPage .grid {
+  margin-top: 20px;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 30px;
 }
