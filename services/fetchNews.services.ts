@@ -1,9 +1,12 @@
 import { News } from "@/types";
+import { notFound } from "next/navigation";
 
 export const fetchNews = async (category: string) => {
   const response = await fetch(`https://newsapi.org/v2/top-headlines?category=${category.toLowerCase()}&apiKey=8c494736782842908e314311a4ed6ba9`, { method: "GET", cache: "no-store" });
 
   const newResponse = (await response.json()) as News.IResponse;
+
+  if (newResponse.totalResults === 0) notFound();
 
   const latestNews: News.Item[] = newResponse.articles.map(article => (
     {
