@@ -1,14 +1,23 @@
+"use client";
 import { News } from "@/types";
 import styles from "./card.module.css";
 import Image from "next/image";
+import { usePathname, useRouter } from "next/navigation";
 
 interface IProps {
   data: News.ICategory | News.Item
 };
 
 const Card = (props: IProps) => {
+  const router = useRouter();
+  const path = usePathname();
+
+  const handleClick = () => {
+    if (path === "/categories" || path === "/") router.push(`/news-list/${props.data.title.toLowerCase()}`);
+  };
+
   return (
-    <div className={styles.card}>
+    <div onClick={handleClick} className={styles.card}>
       <h3>{props.data.title}</h3>
       {props.data.imageUrl !== null && (
         <Image

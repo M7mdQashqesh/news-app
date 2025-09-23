@@ -1,16 +1,20 @@
-'use client'
-import { useEffect, useState } from "react";
+"use client";
+import { News } from "@/types";
 import styles from "./latest-news.module.css";
 import NewsCard from "./news-card/NewsCard";
+import { useEffect, useState } from "react";
 
-const articles = [1, 2, 3];
+interface IProps {
+  category: string;
+  latestNews: News.Item[];
+}
 
-const LatestNews = () => {
+const LatestNews = (props: IProps) => {
   const [highlightedIndex, setHighlightedIndex] = useState<number>(0);
 
   useEffect(() => {
     const highlightInt = setInterval(() => {
-      setHighlightedIndex(oldValue => (oldValue < articles.length - 1) ? (oldValue + 1) : 0);
+      setHighlightedIndex(oldValue => (oldValue < props.latestNews.length - 1) ? (oldValue + 1) : 0);
     }, 3000);
 
     return () => {
@@ -21,9 +25,9 @@ const LatestNews = () => {
   return (
     <div className={styles.latestNews}>
       <div className="container">
-        <h2>Latest News Articles</h2>
+        <h2>Latest {props.category} News Articles</h2>
         <div className={styles.articles}>
-          {articles.map((article, index) => <NewsCard isHighlighted={highlightedIndex === index} key={article} />)}
+          {props.latestNews.map((news, index) => <NewsCard data={news} isHighlighted={highlightedIndex === index} key={index} />)}
         </div>
       </div>
     </div>

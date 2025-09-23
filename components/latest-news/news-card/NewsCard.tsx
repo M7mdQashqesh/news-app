@@ -1,8 +1,10 @@
 import Image from "next/image";
 import styles from "../latest-news.module.css";
 import urban from "@/public/urban.webp";
+import { News } from "@/types";
 
 interface IProps {
+  data: News.Item;
   isHighlighted: boolean;
 }
 
@@ -10,13 +12,13 @@ const NewsCard = (props: IProps) => {
   return (
     <div className={`${styles.newsCard} ${props.isHighlighted ? styles.highlight : ""}`}>
       <div className={styles.info}>
-        <h3>Urban Planning</h3>
+        <h3>{props.data.title}</h3>
         <p>
-          Explore the recent developments in urban planning as cities expand and adapt to modern challenges
+          {props.data.content}
         </p>
         <button>Read more</button>
       </div>
-      <Image src={urban} alt="news-image" layout="responsive" placeholder="blur" />
+      <Image src={props.data.imageUrl ? props.data.imageUrl : urban} width={100} height={100} alt="news-image" layout="responsive" />
     </div>
   )
 }
