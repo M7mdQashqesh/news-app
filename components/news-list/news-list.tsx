@@ -7,7 +7,7 @@ interface IProps {
   category: string;
 };
 
-const NewsList = async (props: IProps) => {
+const NewsList = (props: IProps) => {
   const latestNews = getNewsByCategory(props.category) as News.DBItem[];
 
   return (

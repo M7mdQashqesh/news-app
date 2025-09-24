@@ -10,8 +10,6 @@ interface IProps {
 const Page = async (props: IProps) => {
   const { slug } = await props.params;
   const article = getNewsByArticle(slug);
-  console.log(article);
-
 
   return (
     <div className={styles.articleContainer}>

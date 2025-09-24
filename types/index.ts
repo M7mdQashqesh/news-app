@@ -33,7 +33,7 @@ export namespace News {
   }
 
   export interface DBItem {
-    id: number,
+    id?: number,
     title: string,
     content: string,
     image: string,

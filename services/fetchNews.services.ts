@@ -6,7 +6,7 @@ const db = sql("news.db");
 
 export const getNewsByCategory = (category?: string) => {
   const result = category ? db.prepare(`SELECT * FROM articles WHERE category= ?`).all(category) : db.prepare(`SELECT * FROM articles`).all();
-
+  
   return result;
 };
 
