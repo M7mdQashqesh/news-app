@@ -1,7 +1,7 @@
-import { categories } from "@/data/data";
 import styles from "./categories.module.css";
-import Card from "../card/Card";
+import { categories } from "@/data/data";
 import { News } from "@/types";
+import Category from "../category/Category";
 
 const Categories = ({ caller }: { caller: string }) => {
   return (
@@ -9,7 +9,7 @@ const Categories = ({ caller }: { caller: string }) => {
       <div className="container">
         <h2>Categories</h2>
         <div className={styles.grid}>
-          {categories.map((cat: News.ICategory) => <Card key={cat.title} data={cat} />)}
+          {categories.map((cat: News.ICategory) => <Category key={cat.title} category={cat} />)}
         </div>
       </div>
     </div>

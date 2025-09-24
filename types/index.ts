@@ -41,5 +41,6 @@ export namespace News {
     author_email: string;
     created_date: number;
     slug: string;
+    category:string;
   }
 }

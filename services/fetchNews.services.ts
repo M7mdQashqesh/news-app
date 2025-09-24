@@ -4,11 +4,15 @@ import { notFound } from "next/navigation";
 import sql from "better-sqlite3";
 const db = sql("news.db");
 
-export const getNews = (category?: string) => {
+export const getNewsByCategory = (category?: string) => {
   const result = category ? db.prepare(`SELECT * FROM articles WHERE category= ?`).all(category) : db.prepare(`SELECT * FROM articles`).all();
 
   return result;
 };
+
+export const getNewsByArticle = (slug: string) => {
+  return db.prepare(`SELECT * FROM articles WHERE slug = ?`).get(slug) as News.DBItem;
+}
 
 
 

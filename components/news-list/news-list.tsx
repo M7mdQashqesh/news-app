@@ -1,5 +1,5 @@
 import styles from "./news-list.module.css";
-import { getNews } from "@/services/fetchNews.services";
+import { getNewsByCategory } from "@/services/fetchNews.services";
 import { News } from "@/types";
 import Card from "../card/Card";
 
@@ -8,12 +8,12 @@ interface IProps {
 };
 
 const NewsList = async (props: IProps) => {
-  const latestNews = getNews(props.category) as News.DBItem[];
-  
+  const latestNews = getNewsByCategory(props.category) as News.DBItem[];
+
   return (
     <div className={styles.grid}>
       {latestNews.length > 0 ? latestNews.map((news, index) => (
-        <Card key={news.id + index} data={news} />
+        <Card key={news.id + index} item={news} />
       )) : <div>No Data Found</div>}
     </div>
   )
