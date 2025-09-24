@@ -3,7 +3,6 @@ import styles from "./categories.module.css";
 import Card from "../card/Card";
 import { News } from "@/types";
 
-
 const Categories = ({ caller }: { caller: string }) => {
   return (
     <div className={`${caller === "home-page" ? styles.homeCategories : styles.categoriesPage}`}>

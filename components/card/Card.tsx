@@ -5,7 +5,7 @@ import Image from "next/image";
 import { usePathname, useRouter } from "next/navigation";
 
 interface IProps {
-  data: News.ICategory | News.Item
+  data: News.DBItem | News.ICategory;
 };
 
 const Card = (props: IProps) => {
@@ -19,9 +19,9 @@ const Card = (props: IProps) => {
   return (
     <div onClick={handleClick} className={styles.card}>
       <h3>{props.data.title}</h3>
-      {props.data.imageUrl !== null && (
+      {props.data.image !== null && (
         <Image
-          src={props.data.imageUrl}
+          src={props.data.image}
           alt="news-img"
           width={300}
           height={150}

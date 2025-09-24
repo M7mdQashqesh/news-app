@@ -28,7 +28,7 @@ export namespace News {
 
   export interface ICategory {
     title: string;
-    imageUrl: string;
+    image: string;
     content: string;
   }
 
