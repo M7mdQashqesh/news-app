@@ -31,4 +31,15 @@ export namespace News {
     imageUrl: string;
     content: string;
   }
+
+  export interface DBItem {
+    id: number,
+    title: string,
+    content: string,
+    image: string,
+    author: string,
+    author_email: string;
+    created_date: number;
+    slug: string;
+  }
 }

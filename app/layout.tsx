@@ -25,8 +25,8 @@ export default function RootLayout(props: IProps) {
     <html lang="en">
       <body className={poppinsFont.variable}>
         {props.children}
-        <section>{props.latestSports}</section>
-        <section>{props.latestHealth}</section>
+        {/* <section>{props.latestSports}</section> */}
+        {/* <section>{props.latestHealth}</section> */}
       </body>
     </html>
   );
