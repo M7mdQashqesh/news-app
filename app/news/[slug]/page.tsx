@@ -1,5 +1,6 @@
 import styles from "./page.module.css";
 import { getNewsByArticle } from "@/services/fetchNews.services";
+import { News } from "@/types";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -13,16 +14,16 @@ const Page = async (props: IProps) => {
 
   return (
     <div className={styles.articleContainer}>
-      <Link href={`/news-list/${article.category}`}>{"<"} Go Back</Link>
+      <Link href={`/news-list/${article?.category}`}>{"<"} Go Back</Link>
       <br />
       <br />
-      <h1 className={styles.articleTitle}>{article.title}</h1>
+      <h1 className={styles.articleTitle}>{article?.title}</h1>
       <div className={styles.articleMeta}>
-        <span><b>Author: </b>{article.author} | </span>
-        <span><b>Created At: </b>{new Date(article.created_date).toLocaleString()}</span>
+        <span><b>Author: </b>{article?.author} | </span>
+        <span><b>Created At: </b>{new Date(article?.created_date).toLocaleString()}</span>
       </div>
-      <Image className={styles.articleImage} src={article.image} alt="article image" width={500} height={150} style={{ objectFit: "cover" }} />
-      <p className={styles.articleContent}>{article.content}</p>
+      <Image className={styles.articleImage} src={article?.image} alt="article image" width={500} height={150} style={{ objectFit: "cover" }} />
+      <p className={styles.articleContent}>{article?.content}</p>
     </div>
   )
 }

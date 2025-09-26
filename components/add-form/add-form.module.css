@@ -65,3 +65,10 @@
   background-color: #bababa;
   cursor: not-allowed;
 }
+
+.errorLists {
+  color: rgb(234, 8, 8);
+  font-size: 14px;
+  list-style: disc;
+  margin-left: 20px;
+}

@@ -43,3 +43,5 @@ export const categories: News.ICategory[] = [
     content: "Keep up with the fast-paced world of technology, from gadgets to AI.",
   },
 ];
+
+export const allowedCategories = ["business", "entertainment", "health", "science", "sports", "technology"];
