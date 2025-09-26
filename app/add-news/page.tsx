@@ -1,25 +1,9 @@
 import Header from "@/components/header/Header";
 import { categories } from "@/data/data";
 import styles from "./add-news.module.css";
-import { News } from "@/types";
+import { addArticles } from "@/controller/news-actions";
 
 const Page = () => {
-  const addArticles = async (formData: FormData) => {
-    "use server";
-    const article: News.DBItem = {
-      title: formData.get("title")?.toString() || "",
-      image: formData.get("image")?.toString() || "",
-      content: formData.get("content")?.toString() || "",
-      author: formData.get("author")?.toString() || "",
-      author_email: formData.get("author-email")?.toString() || "",
-      category: formData.get("category")?.toString() || "",
-      created_date: Number(formData.get("date")) || Date.now(),
-      slug: "",
-    }
-
-    console.log(article);
-  }
-
   return (
     <div>
       <Header />
@@ -32,7 +16,7 @@ const Page = () => {
           </div>
           <div className={styles.formGroup}>
             <label htmlFor="image">News Image Url</label>
-            <input type="url" name="image" id="image" />
+            <input type="text" name="image" id="image" />
           </div>
           <div className={styles.formGroup}>
             <label htmlFor="content">News Content</label>

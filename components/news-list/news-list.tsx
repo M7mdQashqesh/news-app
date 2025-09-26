@@ -13,7 +13,7 @@ const NewsList = (props: IProps) => {
   return (
     <div className={styles.grid}>
       {latestNews.length > 0 ? latestNews.map((news, index) => (
-        <Card key={news.id + index} item={news} />
+        <Card key={news.id || Date.now() + index} item={news} />
       )) : <div>No Data Found</div>}
     </div>
   )

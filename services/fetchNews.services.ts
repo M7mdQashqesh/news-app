@@ -6,7 +6,7 @@ const db = sql("news.db");
 
 export const getNewsByCategory = (category?: string) => {
   const result = category ? db.prepare(`SELECT * FROM articles WHERE category= ?`).all(category) : db.prepare(`SELECT * FROM articles`).all();
-  
+
   return result;
 };
 
@@ -14,7 +14,20 @@ export const getNewsByArticle = (slug: string) => {
   return db.prepare(`SELECT * FROM articles WHERE slug = ?`).get(slug) as News.DBItem;
 }
 
-
+export const insertArticle = (newArticle: News.DBItem) => {
+  db.prepare(`
+    INSERT INTO articles (title, content, image, author, author_email, created_date, slug, category)
+    VALUES (
+      @title,
+      @content,
+      @image,
+      @author,
+      @author_email,
+      @created_date,
+      @slug,
+      @category
+    )`).run(newArticle);
+};
 
 
 /**
