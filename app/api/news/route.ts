@@ -7,7 +7,16 @@ export const GET = async (request: NextRequest) => {
   const category = params.get("category") || "sports";
 
   if (!allowedCategories.includes(category)) {
-    return NextResponse.json(null, { status: 400, statusText: "Unknown Category" });
+    return NextResponse.json(null,
+      {
+        status: 400,
+        statusText: "Unknown Category",
+        headers: {
+          "Access-Control-Allow-Origin": "*",
+          "Access-Control-Allow-Methods": "GET",
+          "Access-Control-Allow-Headers": "Content-Type, Authorization",
+        }
+      });
   }
 
   const news = getNewsByCategory(category);
