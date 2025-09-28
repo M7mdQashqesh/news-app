@@ -107,7 +107,6 @@ const prepNews = () => {
 };
 // prepNews();
 
-
 const prepUsers = () => {
   db.prepare(`
       CREATE TABLE IF NOT EXISTS users (
@@ -115,14 +114,15 @@ const prepUsers = () => {
         email TEXT NOT NULL UNIQUE,
         password TEXT NOT NULL,
         role TEXT NOT NULL,
-        displayName TEXT NOT NULL
+        firstName TEXT NOT NULL,
+        lastName TEXT NOT NULL
       )`).run();
 
   db.prepare(`
-    INSERT INTO users (email, password, role, displayName) VALUES
-    ('admin@example.com', '1234', 'admin', 'Mohammed Qashqesh'),
-    ('editor@example.com', '1234', 'editor', 'Waleed Jameel'),
-    ('subscribed1@example.com', '1234', 'subscriber', 'Ahmad Saeed');
+    INSERT INTO users (email, password, role, firstName, lastName) VALUES
+    ('admin@example.com', '1234', 'admin', 'Mohammed', 'Qashqesh'),
+    ('editor@example.com', '1234', 'editor', 'Waleed', 'Jameel'),
+    ('subscribed1@example.com', '1234', 'subscriber', 'Ahmad', 'Saeed')
     `).run();
 };
-prepUsers()
+// prepUsers();
