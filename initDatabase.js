@@ -114,15 +114,14 @@ const prepUsers = () => {
         email TEXT NOT NULL UNIQUE,
         password TEXT NOT NULL,
         role TEXT NOT NULL,
-        firstName TEXT NOT NULL,
-        lastName TEXT NOT NULL
+        displayName TEXT NOT NULL
       )`).run();
 
   db.prepare(`
-    INSERT INTO users (email, password, role, firstName, lastName) VALUES
-    ('admin@example.com', '1234', 'admin', 'Mohammed', 'Qashqesh'),
-    ('editor@example.com', '1234', 'editor', 'Waleed', 'Jameel'),
-    ('subscribed1@example.com', '1234', 'subscriber', 'Ahmad', 'Saeed')
+    INSERT INTO users (email, password, role, displayName) VALUES
+    ('admin@example.com', '$2b$10$32lJApQCcHfLRAonZly66OEGvRYslkaOUgsGdXWYIa6ooRn4Yc87S', 'admin', 'Mohammed Qashqesh'),
+    ('editor@example.com', '$2b$10$Ei3at/0pRMdSPrRDT6SIJeQYsgX.bYTziB0cZIq1nL6QvUSqTZy9m', 'editor', 'Waleed Jameel'),
+    ('subscribed1@example.com', '$2b$10$mI16DKOub8stEAPrUaRAJ.L17fno4RiRqAD73OIVi5SsNP0KTyz7y', 'subscriber', 'Ahmad Saeed')
     `).run();
 };
 // prepUsers();
