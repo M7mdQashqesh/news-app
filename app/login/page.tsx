@@ -1,5 +1,7 @@
 "use client";
+import { redirect } from 'next/navigation';
 import styles from './login.module.css';
+import toast from 'react-hot-toast';
 
 export default function LoginPage() {
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
@@ -16,7 +18,13 @@ export default function LoginPage() {
       });
 
     if (res.status === 200) {
-      console.log(await res.json())
+      const user = await res.json();
+      // Store the user in auth context (react context API)
+      // and store the user in localStorage
+      localStorage.setItem("auth-user", JSON.stringify(user));
+      redirect("/");
+    } else {
+      toast.error("Your email or password is invalid");
     }
   }
 

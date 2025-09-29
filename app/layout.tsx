@@ -1,6 +1,7 @@
 import "./globals.css";
 import type { Metadata } from "next";
 import { Poppins } from "next/font/google";
+import { Toaster } from "react-hot-toast";
 
 const poppinsFont = Poppins({
   weight: ["400", "500", "600", "700"],
@@ -24,6 +25,7 @@ export default function RootLayout(props: IProps) {
   return (
     <html lang="en">
       <body className={poppinsFont.variable}>
+        <Toaster />
         {props.children}
         {/* <section>{props.latestSports}</section> */}
         {/* <section>{props.latestHealth}</section> */}
