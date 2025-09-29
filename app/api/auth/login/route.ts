@@ -1,6 +1,6 @@
 import { findUserByEmail } from "@/services/auth.services";
 import { IUser } from "@/types";
-import { comparePassword } from "@/utils/auth";
+import { comparePassword, generateToken } from "@/utils/auth";
 import { NextRequest, NextResponse } from "next/server";
 
 export const POST = async (request: NextRequest) => {
@@ -20,5 +20,6 @@ export const POST = async (request: NextRequest) => {
   }
 
   delete user.password;
-  return NextResponse.json(user, { status: 200 });
+  const token = generateToken(user);
+  return new NextResponse(token, { status: 200 });
 };

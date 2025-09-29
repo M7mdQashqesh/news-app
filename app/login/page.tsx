@@ -2,6 +2,7 @@
 import { redirect } from 'next/navigation';
 import styles from './login.module.css';
 import toast from 'react-hot-toast';
+import jwt from "jsonwebtoken";
 
 export default function LoginPage() {
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
@@ -18,9 +19,11 @@ export default function LoginPage() {
       });
 
     if (res.status === 200) {
-      const user = await res.json();
+      const token = await res.text();
       // Store the user in auth context (react context API)
       // and store the user in localStorage
+      localStorage.setItem("auth-token", token);
+      const user = jwt.decode(token);
       localStorage.setItem("auth-user", JSON.stringify(user));
       redirect("/");
     } else {
