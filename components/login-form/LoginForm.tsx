@@ -20,10 +20,8 @@ const LoginForm = () => {
 
     if (res.status === 200) {
       const token = await res.text();
-      // Store the user in auth context (react context API)
-      // and store the user in localStorage
-      localStorage.setItem("auth-token", token);
       const user = jwt.decode(token);
+      console.log(user);
       localStorage.setItem("auth-user", JSON.stringify(user));
       redirect("/");
     } else toast.error("Your email or password is invalid");

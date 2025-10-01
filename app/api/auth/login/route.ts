@@ -1,6 +1,7 @@
 import { findUserByEmail } from "@/services/auth.services";
 import { IUser } from "@/types";
 import { comparePassword, generateToken } from "@/utils/auth";
+import { cookies } from "next/headers";
 import { NextRequest, NextResponse } from "next/server";
 
 export const POST = async (request: NextRequest) => {
@@ -20,6 +21,14 @@ export const POST = async (request: NextRequest) => {
   }
 
   delete user.password;
-  const token = generateToken(user);
+  const token = await generateToken(user);
+
+  (await cookies()).set("auth-token", token,
+    {
+      httpOnly: true,
+      secure: process.env.NODE_ENV === "production",
+      maxAge: 3600,
+    });
+
   return new NextResponse(token, { status: 200 });
 };

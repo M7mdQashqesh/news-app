@@ -1,11 +1,24 @@
 import styles from "./page.module.css";
 import { getNewsByArticle } from "@/services/fetchNews.services";
 import { News } from "@/types";
+import { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 
 interface IProps {
   params: Promise<{ slug: string }>;
+}
+
+export const generateMetadata = async (props: IProps): Promise<Metadata> => {
+  const { slug } = await props.params;
+  const articles = getNewsByArticle(slug);
+
+  return {
+    title: `${articles.title}`,
+    authors: {
+      name: `${articles.author}`
+    },
+  }
 }
 
 const Page = async (props: IProps) => {

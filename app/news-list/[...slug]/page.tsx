@@ -1,9 +1,18 @@
 import Header from "@/components/header/Header";
 import NewsList from "@/components/news-list/news-list";
+import { Metadata } from "next";
 import { Suspense } from "react";
 
 interface IProps {
   params: Promise<{ slug: string[] }>
+}
+
+export const generateMetadata = async (props: IProps): Promise<Metadata> => {
+  const { slug } = await props.params;
+
+  return {
+    title: `${slug}`
+  }
 }
 
 const Page = async (props: IProps) => {
